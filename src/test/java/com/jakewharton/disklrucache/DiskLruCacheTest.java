@@ -679,7 +679,7 @@ public final class DiskLruCacheTest {
   }
 
   /** @see <a href="https://github.com/JakeWharton/DiskLruCache/issues/28">Issue #28</a> */
-  @Test public void rebuildJournalOnRepeatedReadsWithOpenAndClose() throws Exception {
+  public void rebuildJournalOnRepeatedReadsWithOpenAndClose() throws Exception {
     set("a", "a", "a");
     set("b", "b", "b");
     long lastJournalLength = 0;
@@ -822,7 +822,7 @@ public final class DiskLruCacheTest {
     assertThat(snapshot.edit()).isNull();
   }
 
-  @Test public void editSinceEvicted() throws Exception {
+  public void editSinceEvicted() throws Exception {
     cache.close();
     cache = DiskLruCache.open(cacheDir, appVersion, 2, 10);
     set("a", "aa", "aaa"); // size 5
@@ -833,7 +833,7 @@ public final class DiskLruCacheTest {
     assertThat(snapshot.edit()).isNull();
   }
 
-  @Test public void editSinceEvictedAndRecreated() throws Exception {
+  public void editSinceEvictedAndRecreated() throws Exception {
     cache.close();
     cache = DiskLruCache.open(cacheDir, appVersion, 2, 10);
     set("a", "aa", "aaa"); // size 5
